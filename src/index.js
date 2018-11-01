@@ -20,8 +20,17 @@ function validRoute() {
   }
 }
 
+window.goTo = (pathName) => {
+  window.history.pushState({}, pathName, window.location.origin + pathName);
+  contentDiv.innerHTML = routes[pathName](getState());
+}
+
 window.onpopstate = () => {
   validRoute()
 }
 
 validRoute()
+
+export {
+  navigate
+}
