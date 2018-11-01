@@ -9,12 +9,12 @@ const contentDiv = document.getElementById('app');
 
 const routes = {
   '/form': form,
-  '/list': list(getState())
+  '/list': list
 };
 
 function validRoute() {
   if (routes[window.location.pathname]) {
-    contentDiv.innerHTML = routes[window.location.pathname];
+    contentDiv.innerHTML = routes[window.location.pathname](getState());
   } else {
     window.history.pushState({}, '/form', `${window.location.origin}/form`);
   }

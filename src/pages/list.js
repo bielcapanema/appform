@@ -3,9 +3,9 @@ export default function list(users) {
     ${users.map((user) => {
       return `<li class="card">
       <h4>${user.name}</h4>
-      <p>E-mail: ${user.email}</p>
-      <p>CPF: ${user.cpf}</p>
-      <p>Telefone: ${user.phone}</p>
+      <p><strong>E-mail</strong>: ${user.email}</p>
+      <p><strong>CPF</strong>: ${user.cpf}</p>
+      <p><strong>Telefone</strong>: ${user.phone}</p>
     </li>`
     }).join('')}
     </ol>`
