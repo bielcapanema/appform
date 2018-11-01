@@ -1,3 +1,4 @@
+import './styles/index.scss';
 import form from './pages/form';
 import list from './pages/list';
 
