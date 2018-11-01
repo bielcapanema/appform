@@ -1,12 +1,15 @@
 import './styles/index.scss';
 import form from './pages/form';
 import list from './pages/list';
+import {
+  getState
+} from './db'
 
 const contentDiv = document.getElementById('app');
 
 const routes = {
   '/form': form,
-  '/list': list
+  '/list': list(getState())
 };
 
 function validRoute() {

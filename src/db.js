@@ -26,7 +26,7 @@ const INITIAL_STATE = [{
 
 function getState() {
   const list = JSON.parse(localStorage.getItem('list'));
-  if (typeof list !== 'object') {
+  if (list === null) {
     saveState(INITIAL_STATE);
     return INITIAL_STATE
   }
