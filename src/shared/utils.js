@@ -35,6 +35,12 @@ function validateField(field) {
       default:
         break
     }
+
+    if (err.innerText.length > 0) {
+      $(field).classList.add('invalid')
+    } else {
+      $(field).classList.remove('invalid')
+    }
   }
 
   if (isFormValid()) {

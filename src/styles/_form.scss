@@ -70,6 +70,10 @@ form {
         margin-top: 25px;
         position: absolute;
       }
+
+      .invalid {
+        color: $input-invalid;
+      }
     }
 
     /**
@@ -97,6 +101,11 @@ form {
 
       &::-webkit-input-placeholder {
         color: $input;
+      }
+
+      &.invalid {
+        color: $input-invalid;
+        border-bottom-color: $input-invalid;
       }
     }
 
