@@ -1,12 +1,43 @@
-function validadeForm() {
-  const {
-    email,
-    name,
-    cpf,
-    phone
-  } = getFormValues()
+function $(id) {
+  return document.getElementById(id);
+}
 
-  if (email && name && cpf && phone) {
+function validateField(field) {
+  const err = $(`${field}-error`)
+  const value = $(field).value
+
+  err.innerText = ''
+
+  if (value.length === 0) {
+    err.innerText = 'Campo obrigatório!'
+  } else {
+    switch (field) {
+      case 'name':
+        if (value.length < 3) {
+          err.innerText = 'Campo deve conter 3 caracteres ou mais'
+        }
+        break
+      case 'email':
+        if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
+          err.innerText = 'Digite um e-mail válido!'
+        }
+        break
+      case 'cpf':
+        if (!/([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})/.test(value)) {
+          err.innerText = 'Digite um CPF válido!'
+        }
+        break
+      case 'phone':
+        if (!/^[+]?[(]?[0-9]{2}[)]?[ ]?[0-9]{5}[-]?[0-9]{4,6}$/.test(value)) {
+          err.innerText = 'Digite um telefone válido!'
+        }
+        break
+      default:
+        break
+    }
+  }
+
+  if (isFormValid()) {
     setBtnDisabled(false)
   } else {
     setBtnDisabled(true)
@@ -27,6 +58,22 @@ function getFormValues() {
   }
 }
 
+function isFormValid() {
+  const emailError = $('email-error').innerText.length > 0
+  const nameError = $('name-error').innerText.length > 0
+  const cpfError = $('cpf-error').innerText.length > 0
+  const phoneError = $('phone-error').innerText.length > 0
+
+  const {
+    email,
+    name,
+    cpf,
+    phone
+  } = getFormValues()
+
+  return !(emailError || nameError || cpfError || phoneError) && email.length && name.length && cpf.length && phone.length
+}
+
 function clearFormValues() {
   $('email').value = ''
   $('name').value = ''
@@ -35,18 +82,18 @@ function clearFormValues() {
 }
 
 function submitForm(saveCallback) {
-  const user = getFormValues()
-  setBtnLoading(true)
   setTimeout(() => {
-    saveCallback(user)
-    setBtnLoading(false)
-    clearFormValues()
-    setBtnDisabled(true)
-  }, 1000)
-}
-
-function $(id) {
-  return document.getElementById(id);
+    if (isFormValid()) {
+      const user = getFormValues()
+      setBtnLoading(true)
+      setTimeout(() => {
+        saveCallback(user)
+        setBtnLoading(false)
+        clearFormValues()
+        setBtnDisabled(true)
+      }, 1000)
+    }
+  }, 1)
 }
 
 function setBtnLoading(isLoading) {
@@ -75,6 +122,6 @@ function setBtnDisabled(isDisabled) {
 
 export {
   $,
-  validadeForm,
-  submitForm
+  submitForm,
+  validateField
 }

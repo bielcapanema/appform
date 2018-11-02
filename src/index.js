@@ -3,8 +3,8 @@ import {
   addUser
 } from './db'
 import {
-  validadeForm,
   submitForm,
+  validateField
 } from './shared/utils'
 import {
   validRoute,
@@ -12,8 +12,8 @@ import {
 } from './router'
 
 window.goTo = goTo
+window.validateField = validateField
 window.onpopstate = validRoute
-window.validadeForm = validadeForm
 window.submit = function submit() {
   submitForm(addUser)
 }

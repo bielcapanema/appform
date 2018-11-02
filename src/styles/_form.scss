@@ -63,6 +63,13 @@ form {
       display: flex;
       flex-flow: column-reverse;
       margin-bottom: 1em;
+
+      .input-error {
+        color: $input-invalid;
+        font-size: 11px;
+        margin-top: 25px;
+        position: absolute;
+      }
     }
 
     /**
