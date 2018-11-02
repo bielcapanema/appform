@@ -1,13 +1,4 @@
-$input: #efeeed;
-$input-placeholder: #939393;
-$input-focus: #333333;
-$input-border: #efeeed;
-$input-invalid: #eb4a46;
-
-$button: #ffffff;
-$button-bg: #00c8b3;
-$button-disabled: #dddcdc;
-$button-disabled-bg: #f6f6f6;
+@import 'variables';
 
 form {
   background: #fff;

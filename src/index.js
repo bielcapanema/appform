@@ -2,10 +2,16 @@ import './styles/index.scss';
 import form from './pages/form';
 import list from './pages/list';
 import {
-  getState
+  getState,
+  addUser
 } from './db'
+import {
+  $,
+  validadeForm,
+  submitForm
+} from './shared/utils'
 
-const contentDiv = document.getElementById('app');
+const contentDiv = $('app');
 
 const routes = {
   '/cadastro': form,
@@ -27,6 +33,11 @@ window.goTo = (pathName) => {
 
 window.onpopstate = () => {
   validRoute()
+}
+
+window.validadeForm = validadeForm
+window.submit = function submit() {
+  submitForm(addUser)
 }
 
 validRoute()
