@@ -8,15 +8,15 @@ import {
 const contentDiv = document.getElementById('app');
 
 const routes = {
-  '/form': form,
-  '/list': list
+  '/cadastro': form,
+  '/lista': list
 };
 
 function validRoute() {
   if (routes[window.location.pathname]) {
     contentDiv.innerHTML = routes[window.location.pathname](getState());
   } else {
-    window.history.pushState({}, '/form', `${window.location.origin}/form`);
+    window.history.pushState({}, '/cadastro', `${window.location.origin}/cadastro`);
   }
 }
 
@@ -30,7 +30,3 @@ window.onpopstate = () => {
 }
 
 validRoute()
-
-export {
-  navigate
-}

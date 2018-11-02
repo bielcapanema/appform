@@ -1,7 +1,9 @@
+import tabs from '../components/tabs'
+
 export default function list(users) {
   return (
-    `<div>
-      <button onClick="window.goTo('/form')">CADASTRO</button>
+    `${tabs()}
+    <div>
       <ol>
         ${users.map((user) => {
           return `<li class="card">
