@@ -1,8 +1,62 @@
-function $(id) {
+const $ = (id) => {
   return document.getElementById(id);
 }
 
-function validateField(field) {
+const setBtnDisabled = (isDisabled) => {
+  const btn = $('register-btn')
+  if (isDisabled) {
+    btn.disabled = true
+    btn.classList.add('disabled')
+  } else {
+    btn.disabled = false
+    btn.classList.remove('disabled')
+  }
+}
+
+const setBtnLoading = (isLoading) => {
+  const btn = $('register-btn')
+  if (isLoading) {
+    btn.disabled = true
+    btn.classList.add('loading')
+    btn.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>'
+  } else {
+    btn.disabled = false
+    btn.classList.remove('loading')
+    btn.innerHTML = 'Cadastrar'
+  }
+}
+
+const getFormValues = () => {
+  const email = $('email').value
+  const name = $('name').value
+  const cpf = $('cpf').value
+  const phone = $('phone').value
+
+  return {
+    email,
+    name,
+    cpf,
+    phone
+  }
+}
+
+const isFormValid = () => {
+  const emailError = $('email-error').innerText.length > 0
+  const nameError = $('name-error').innerText.length > 0
+  const cpfError = $('cpf-error').innerText.length > 0
+  const phoneError = $('phone-error').innerText.length > 0
+
+  const {
+    email,
+    name,
+    cpf,
+    phone
+  } = getFormValues()
+
+  return !(emailError || nameError || cpfError || phoneError) && email.length && name.length && cpf.length && phone.length
+}
+
+const validateField = (field) => {
   const err = $(`${field}-error`)
   const value = $(field).value
 
@@ -35,12 +89,12 @@ function validateField(field) {
       default:
         break
     }
+  }
 
-    if (err.innerText.length > 0) {
-      $(field).classList.add('invalid')
-    } else {
-      $(field).classList.remove('invalid')
-    }
+  if (err.innerText.length > 0) {
+    $(field).classList.add('invalid')
+  } else {
+    $(field).classList.remove('invalid')
   }
 
   if (isFormValid()) {
@@ -50,44 +104,15 @@ function validateField(field) {
   }
 }
 
-function getFormValues() {
-  const email = $('email').value
-  const name = $('name').value
-  const cpf = $('cpf').value
-  const phone = $('phone').value
 
-  return {
-    email,
-    name,
-    cpf,
-    phone
-  }
-}
-
-function isFormValid() {
-  const emailError = $('email-error').innerText.length > 0
-  const nameError = $('name-error').innerText.length > 0
-  const cpfError = $('cpf-error').innerText.length > 0
-  const phoneError = $('phone-error').innerText.length > 0
-
-  const {
-    email,
-    name,
-    cpf,
-    phone
-  } = getFormValues()
-
-  return !(emailError || nameError || cpfError || phoneError) && email.length && name.length && cpf.length && phone.length
-}
-
-function clearFormValues() {
+const clearFormValues = () => {
   $('email').value = ''
   $('name').value = ''
   $('cpf').value = ''
   $('phone').value = ''
 }
 
-function submitForm(saveCallback) {
+const submitForm = (saveCallback) => {
   setTimeout(() => {
     if (isFormValid()) {
       const user = getFormValues()
@@ -100,30 +125,6 @@ function submitForm(saveCallback) {
       }, 1000)
     }
   }, 1)
-}
-
-function setBtnLoading(isLoading) {
-  const btn = $('register-btn')
-  if (isLoading) {
-    btn.disabled = true
-    btn.classList.add('loading')
-    btn.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>'
-  } else {
-    btn.disabled = false
-    btn.classList.remove('loading')
-    btn.innerHTML = 'Cadastrar'
-  }
-}
-
-function setBtnDisabled(isDisabled) {
-  const btn = $('register-btn')
-  if (isDisabled) {
-    btn.disabled = true
-    btn.classList.add('disabled')
-  } else {
-    btn.disabled = false
-    btn.classList.remove('disabled')
-  }
 }
 
 export {

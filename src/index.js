@@ -1,6 +1,8 @@
 import './styles/index.scss';
 import {
-  addUser
+  addUser,
+  editUser,
+  deleteUser
 } from './db'
 import {
   submitForm,
@@ -11,11 +13,21 @@ import {
   goTo
 } from './router'
 
+window.deleteUser = () => {
+  deleteUser()
+  validRoute()
+}
+window.editUser = (index) => {
+  goTo('/editar', {
+    index,
+    edit: true
+  })
+}
 window.goTo = goTo
 window.validateField = validateField
 window.onpopstate = validRoute
-window.submit = function submit() {
-  submitForm(addUser)
+window.submit = (index) => {
+  submitForm(isNaN(index) ? addUser : (user) => editUser(user, index))
 }
 
 validRoute()

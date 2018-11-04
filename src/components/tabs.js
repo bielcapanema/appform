@@ -1,4 +1,4 @@
-function tabs() {
+export default () => {
   return `<div class="wrapper">
     <h2>App Form</h2>
     <h6>Utilizando VanillaJS</h6>
@@ -9,5 +9,3 @@ function tabs() {
     </nav>
   </div>`
 }
-
-export default tabs
