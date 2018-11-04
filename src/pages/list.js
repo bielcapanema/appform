@@ -1,6 +1,6 @@
 import tabs from '../components/tabs'
 
-export default (users) => {
+export default (users = []) => {
   return `${tabs()}
     <div class="list">
       ${users === false ? (

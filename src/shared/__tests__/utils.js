@@ -1,3 +1,3 @@
-test('formats the value', () => {
+test('Utils tests', () => {
 
 })

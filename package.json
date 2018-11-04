@@ -18,8 +18,7 @@
     "build": "webpack --mode=production",
     "precommit": "lint-staged && npm run test:e2e:run",
     "postbuild": "cp ./public/index.html ./dist/index.html",
-    "start": "npm-run-all --parallel start:*",
-    "start:client": "serve --no-clipboard --single --listen 8080 dist",
+    "start": "webpack-dev-server --mode=development",
     "format": "prettier \"**/*.+(js|json|less|css|ts|tsx|md|scss)\" --write",
     "lint": "jest --config test/jest.lint.js",
     "validate": "npm run test:coverage && npm run test:e2e:run",
@@ -68,7 +67,9 @@
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.9"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sinon": "^7.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bielcapanema/appform.git"

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List render 1`] = `
+"<div class=\\"wrapper\\">
+    <h2>App Form</h2>
+    <h6>Utilizando VanillaJS</h6>
+    <nav class=\\"tabs\\">
+      <div class=\\"selector\\"></div>
+      <a onClick=\\"window.goTo('/cadastro')\\" class=\\"\\">Cadastro</a>
+      <a onClick=\\"window.goTo('/lista')\\"  class=\\"\\">Lista</a>
+    </nav>
+  </div>
+    <div class=\\"list\\">
+      <h3>Nenhum usuário cadastrado.</h4>
+    </div>"
+`;
