@@ -117,8 +117,8 @@ const submitForm = (saveCallback) => {
     if (isFormValid()) {
       const user = getFormValues()
       setBtnLoading(true)
+      saveCallback(user)
       setTimeout(() => {
-        saveCallback(user)
         setBtnLoading(false)
         clearFormValues()
         setBtnDisabled(true)
