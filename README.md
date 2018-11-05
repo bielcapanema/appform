@@ -2,7 +2,7 @@
 
 > Projeto para testar as habilidades de programação front end sem utilizar bibliotecas auxiliares
 
-Não foram utilzadas libs para auxílio na contrução da interface.
+Não foram utilzadas libs para auxílio na construção da interface.
 
 ## Installing / Getting started
 
